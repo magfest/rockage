@@ -3,9 +3,8 @@ from uber.common import *
 config = parse_config(__file__)
 django.conf.settings.TEMPLATE_DIRS.insert(0, join(config['module_root'], 'templates'))
 
-class AnalyticsStatic:
-    def index(self, session):
-        pass
+class RockageStatic:
+    pass
 
 rockage_app_config = {
     '/': {
@@ -14,4 +13,4 @@ rockage_app_config = {
     }
 }
 
-cherrypy.tree.mount(AnalyticsStatic(), PATH + '/rstatic', rockage_app_config)
+cherrypy.tree.mount(RockageStatic(), PATH + '/rstatic', rockage_app_config)
