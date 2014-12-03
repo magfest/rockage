@@ -1,0 +1,22 @@
+    <td><b>Badge:</b></td>
+    <td>
+        {% if attendee.badge_type == PSEUDO_GROUP_BADGE %}
+            Group Registration
+        {% elif attendee.badge_type == PSEUDO_DEALER_BADGE %}
+            Dealer Application
+        {% else %}
+            {% if badge_type == ATTENDEE and attendee.overridden_price == None %}
+                {{ attendee.badge_type_label }}
+                (${{ BADGE_PRICE }})
+            {% else %}
+                San Jose State University Student<br/>Discounted 3-day Admission
+                (${{ attendee.overridden_price }})<br/>
+                <br/>
+                <font size="-1"><i>
+                You must present a valid SJSU student ID for this ticket or you will need to pay full price at the door.
+                This discount only applies for San Jose State University students, and does not apply to students from other schools.
+                </i></font>
+                <input type="hidden" name="is_student" value="{% if attendee.overridden_price != None %}1{% else %}0{% endif %}" />
+            {% endif %}
+        {% endif %}
+    </td>

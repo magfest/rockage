@@ -1,0 +1,16 @@
+    <tr>
+        <td class="nobr"  id="aSSSS students">
+            <input type="hidden" name="is_student" value=0 /> <!-- set if we give the Rockage SJSU student discount -->
+            <input type="radio" id="student" name="badge_type" value="{{ ATTENDEE_BADGE }}" />
+            <b>Student:</b> &nbsp; ${{ STUDENT_BADGE_PRICE }}
+        </td>
+        <td>
+            <ul>
+                <li>SJSU student discount: All-access, three-day admission.</li>
+                <li><b>San Jose State University Students</b> <i>only</i></li>
+                <li>Must present a valid SJSU student ID at {{ EVENT_NAME }} or pay full price.</li>
+                {% if PRICE_BUMPS_ENABLED %}<li style="color:red">{% student_price_notice %}</li>{% endif %}
+            </ul>
+        </td>
+        <td> {% popup_link "../static_views/attendees.html" "Details" %} </td>
+    </tr>
